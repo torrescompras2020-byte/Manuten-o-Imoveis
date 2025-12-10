@@ -1,0 +1,182 @@
+/* ================= VARIÁVEIS DO TEMA ================= */
+:root{
+  --bg:#0d0d0d;
+  --card:#151515;
+  --muted:#d9d9d9;
+  --accent:#d9d9d9;
+  --white:#ffffff;
+  --nav-height:64px;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0;}
+
+body{
+  font-family:Inter, system-ui, Arial, sans-serif;
+  background: repeating-linear-gradient(0deg, #0d0d0d, #0d0d0d 2px, #101010 2px, #101010 4px);
+  color:var(--white);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:var(--nav-height);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:8px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  z-index:1000;
+}
+
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;display:block}
+.brand .title{font-weight:700;font-size:16px;color:var(--white)}
+
+.nav-actions{
+  margin-left:auto;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.nav-btn{
+  padding:10px 14px;
+  border-radius:999px;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+
+.nav-btn:hover{
+  background:var(--accent);
+  color:#000;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  width:40px; height:40px;
+  border-radius:8px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,0.03);
+  background:transparent;
+  cursor:pointer;
+}
+
+.hamburger div{
+  width:20px;
+  height:2px;
+  background:var(--white);
+  margin:3px 0;
+  transition:0.25s;
+}
+
+/* ================= MENU MOBILE ================= */
+@media(max-width:720px){
+  .hamburger{display:flex;}
+
+  .nav-actions{
+    position:fixed;
+    top:var(--nav-height);
+    left:0; right:0;
+    background:#0d0d0d;
+    padding:10px 16px;
+    flex-direction:column;
+    gap:8px;
+    display:none;
+  }
+
+  .nav-actions.open{display:flex;}
+  .nav-btn{width:100%;justify-content:center;}
+}
+
+/* ================= PÁGINAS (SPA) ================= */
+.page{display:none;}
+.page.show{display:block;}
+
+/* ================= LOGIN ================= */
+#login.show{
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  padding-top:var(--nav-height);
+}
+
+.login-card{
+  width:380px;
+  max-width:94%;
+  background:var(--card);
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6);
+}
+
+.small{color:var(--muted);font-size:13px}
+
+/* ================= MAIN / CONTAINERS ================= */
+.main{
+  max-width:1100px;
+  margin:calc(var(--nav-height) + 24px) auto;
+  padding:20px;
+}
+
+.container{
+  background:var(--card);
+  padding:18px;
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6);
+  margin-bottom:18px;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr;}
+}
+
+/* ================= INPUTS & BOTÕES ================= */
+input,select,button,textarea{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.04);
+  background:#0f0f0f;
+  color:var(--white);
+}
+
+/* ================= TABELAS ================= */
+.table{width:100%;overflow:auto;}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  color:var(--white);
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  text-align:left;
+  white-space:nowrap;
+}

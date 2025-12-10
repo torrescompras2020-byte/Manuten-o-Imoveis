@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Guardião - Sistema Unificado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="logo">
+      <div class="title">Guardião Manutenções Prediais</div>
+      <div class="slogan" style="font-size:12px; color:#d9d9d9; margin-top:-4px;">
+        Fazendo a manutenção do seu lar
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamb">
+      <div></div><div></div><div></div>
+    </button>
+
+    <div class="nav-actions" id="navActions">
+      <a class="nav-btn" data-page="dashboard">Início</a>
+      <a class="nav-btn" data-page="cadastro">Cadastro</a>
+      <a class="nav-btn" data-page="manutencao">Manutenção</a>
+      <a class="nav-btn" data-page="relatorio">Relatórios</a>
+      <!-- Sair NÃO tem data-page, para não passar no handler de navegação -->
+      <a class="nav-btn" id="btnLogout">Sair</a>
+    </div>
+  </nav>
+
+  <!-- ================= LOGIN (fora da .main) ================= -->
+  <section id="login" class="page show">
+    <div class="login-card">
+      <img src="assets/logo.png" style="width:84px;margin:0 auto 8px;display:block">
+      <h2>Entrar</h2>
+
+      <form id="formLogin" novalidate>
+        <label>Usuário</label>
+        <input id="usuario" required>
+
+        <label>Senha</label>
+        <div style="position:relative;">
+          <input id="senha" type="password" required minlength="4" style="padding-right:40px;">
+          <span id="toggleSenha"
+                style="position:absolute; right:10px; top:50%; transform:translateY(-50%);
+                       cursor:pointer; font-size:14px; color:#d9d9d9;">👁️</span>
+        </div>
+
+        <div style="margin-top:10px">
+          <button type="submit">Entrar</button>
+        </div>
+        <div id="msg" class="small" style="margin-top:8px"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+  <div class="main">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page">
+      <div class="grid">
+        <div class="container">
+          <h3>Total de Imóveis</h3>
+          <div id="totalImoveis" style="font-size:24px">0</div>
+        </div>
+
+        <div class="container">
+          <h3>Total de Manutenções</h3>
+          <div id="totalMan" style="font-size:24px">0</div>
+        </div>
+
+        <div class="container">
+          <h3>Total Gasto</h3>
+          <div id="totalGasto" style="font-size:24px">R$ 0.00</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Visão rápida</h3>
+        <p class="small">Use os botões no topo para navegar entre telas.</p>
+      </div>
+    </section>
+
+    <!-- CADASTRO -->
+    <section id="cadastro" class="page">
+      <div class="container">
+        <h2>Cadastrar Imóvel</h2>
+
+        <form id="formImovel" novalidate>
+          <label>ID do Imóvel</label>
+          <input id="idImovel" required>
+
+          <label>Endereço</label>
+          <input id="endereco">
+
+          <label>Tipo</label>
+          <select id="tipo">
+            <option>Apartamento</option>
+            <option>Casa</option>
+            <option>Comercial</option>
+          </select>
+
+          <div style="margin-top:10px"><button type="submit">Salvar</button></div>
+        </form>
+      </div>
+
+      <div class="container table">
+        <h3>Imóveis Cadastrados</h3>
+        <table id="tabelaImoveis">
+          <thead>
+            <tr><th>ID</th><th>Endereço</th><th>Tipo</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MANUTENÇÃO -->
+    <section id="manutencao" class="page">
+      <div class="container">
+        <h2>Registrar Manutenção</h2>
+
+        <form id="formMan" novalidate>
+          <label>Imóvel</label>
+          <select id="imovel" required></select>
+
+          <label>Tipo de Reparo</label>
+          <input id="reparo" required>
+
+          <label>Custo</label>
+          <input id="custo" type="number" min="0" step="0.01" required>
+
+          <label>Data</label>
+          <input id="data" type="date" required>
+
+          <div style="margin-top:10px"><button type="submit">Registrar</button></div>
+        </form>
+      </div>
+
+      <div class="container table">
+        <h3>Histórico</h3>
+        <table id="tabelaMan">
+          <thead>
+            <tr><th>Imóvel</th><th>Reparo</th><th>Custo</th><th>Data</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RELATÓRIO -->
+    <section id="relatorio" class="page">
+      <div class="container table">
+        <h2>Relatório de Custos por Imóvel (Mensal)</h2>
+
+        <div style="overflow:auto">
+          <table id="tabelaRel">
+            <thead>
+              <tr>
+                <th>Imóvel</th><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
