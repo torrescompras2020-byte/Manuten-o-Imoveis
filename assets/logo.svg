@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="160" height="160">
+  <rect width="120" height="120" fill="none"/>
+  <g transform="translate(10,8)" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- House outline -->
+    <path d="M10 44 L50 14 L90 44 V86 H10 Z" />
+    <!-- Wrench -->
+    <path d="M72 34 C78 28 88 28 94 34 C100 40 100 50 94 56 L74 76 C70 80 64 80 60 76 L56 72" />
+    <path d="M62 48 L84 70" />
+  </g>
+</svg>
